@@ -1,62 +1,48 @@
-import { View, Text, Button, StyleSheet } from 'react-native';
-import { Link, Stack, useNavigation } from 'expo-router';
+import { View, Text, Pressable, StyleSheet } from 'react-native';
+import { Link } from 'expo-router';
 
 export default function Home() {
-  const navigation = useNavigation();
-
-  const handShowHearder = () => {
-    navigation.setOptions({
-      headerShown: true,
-    });
-  }
-
-  const handHideHearder = () => {
-    navigation.setOptions({
-      headerShown: false,
-    });
-  }
-
   return (
     <View style={styles.container}>
-      <Stack.Screen options={{ 
-        title: 'SENAI',
 
-        headerRight: () => (
-          <Button onPress={() => alert('Olá, Bem-vindo à aula de Mobile!')} title='Info' color={'#400C0F'}/>
-        ),
-        
-        headerStyle: {
-          backgroundColor: '#950004',
-        },
-        headerTintColor: '#fff',
-        }}/>
+      <Link href="/about" asChild>
+      <Pressable style={styles.button}>
+        <Text style={styles.buttonText}>Vamo para a Sobre?</Text>
+      </Pressable>
+      </Link>
 
-      <Text style={styles.title}>Bem-vindo à tela inicial!</Text>
-      <Link style={styles.text} href="/about">Ir para Sobre</Link>
-      <Button color={'#950004'} title="Mostrar Header" onPress={handShowHearder} ></Button>
-      <Button color={'#950004'} title="Ocultar Header" onPress={handHideHearder} ></Button>
+      <Link style={styles.terms} href="/termos">Leia os Termos</Link>
+
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        gap: 10
-    },
-
-    title: {
-        fontSize: 24,
-        fontWeight: 'bold'
-    },
-
-    text: {
-        color: '#950004',
-        fontSize: 18,
-        fontWeight: 'bold',
-        marginTop: 5
-    },
-
+  container: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+  },
+  title: {
+      fontSize: 24,
+      fontWeight: 'bold',
+      marginBottom: 20
+  },
+  button: {
+      backgroundColor: '#007bff',
+      paddingVertical: 10,
+      paddingHorizontal: 20,
+      borderRadius: 5,
+  },
+  buttonText: {
+      color: 'white',
+      fontSize: 16,
+      textAlign: 'center'
+  },
+  terms: {
+      color: '#007bff',
+      fontSize: 16,
+      fontWeight: 'bold',
+      marginTop: 10
+  }
 });
