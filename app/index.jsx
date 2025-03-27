@@ -20,6 +20,11 @@ export default function Home() {
     <View style={styles.container}>
       <Stack.Screen options={{ 
         title: 'SENAI',
+
+        headerRight: () => (
+          <Button onPress={() => alert('Olá, Bem-vindo à aula de Mobile!')} title='Info' color={'#400C0F'}/>
+        ),
+        
         headerStyle: {
           backgroundColor: '#950004',
         },
